@@ -44,9 +44,10 @@ public class NearestNeighbor {
 		// used to calculate accuracy
 		calculateAccuracy();
 
-		//closes the reader
+		// closes the reader
 		reader.close();
 	}
+
 	private static void calculateAccuracy() {
 		int matchCount = 0;
 		for (int samples = 0; samples < testingClassification.length; samples++) {
@@ -54,15 +55,16 @@ public class NearestNeighbor {
 				matchCount++;
 			}
 		}
+		//number of matches divided by number of testing examples
 		double accuracy = (double) matchCount / (double) testingClassification.length;
-		System.out.println(" matchCount : " + matchCount);
-		System.out.println(" ACCURACY : " + accuracy);
+		System.out.println(" matchCount: " + matchCount);
+		System.out.println(" ACCURACY: " + accuracy);
 
 	}
 
 	private static void analyzeTestSamples() {
-		System.out.println("EX#: TRUE LABEL,     PREDICTED LABEL");
-		
+		System.out.println("EX#: TRUE LABEL, PREDICTED LABEL");
+
 		for (int i = 0; i < testingSamples.length; i++) {
 			double testingSample[] = testingSamples[i];
 			double smallestKnownDistance = 0.0;
@@ -81,7 +83,7 @@ public class NearestNeighbor {
 				}
 			}
 			testingClassificationAccurate[i] = trainingClassification[smallestIndex];
-			
+
 			System.out.println(i + 1 + ":" + testingClassification[i] + "      " + testingClassificationAccurate[i]);
 
 		}
@@ -140,7 +142,7 @@ public class NearestNeighbor {
 				trainingSamples[rowCount][2] = Double.valueOf(row[2]);
 				trainingSamples[rowCount][3] = Double.valueOf(row[3]);
 				trainingClassification[rowCount] = row[4];
-				
+
 				rowCount++;
 			}
 
